@@ -79,13 +79,17 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="whh的博客">
-<meta property="og:url" content="http://yoursite.com/archives/2019/03/index.html">
+<meta name="description" content="前言最近由于数值分析实验课要求，需要通过matlab实现矩阵的LU分解。但是看了很多网友写的程序，基本上都是通过循环嵌套循环来实现矩阵的LU分解。略感琐碎，因此最近两天便一直在思考能否利用矩阵的乘法，来简化循环，让代码更加美观，便于理解。 代码%% 直接分解法，分解为LU矩阵 n = size(A,1); L = eye(n); U = zeros(n); % U第一行, L第一列 U(1,:)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="10行代码实现矩阵的LU分解（matlab）">
+<meta property="og:url" content="http://yoursite.com/2019/03/29/10行代码实现矩阵的LU分解（matlab）/index.html">
 <meta property="og:site_name" content="whh的博客">
+<meta property="og:description" content="前言最近由于数值分析实验课要求，需要通过matlab实现矩阵的LU分解。但是看了很多网友写的程序，基本上都是通过循环嵌套循环来实现矩阵的LU分解。略感琐碎，因此最近两天便一直在思考能否利用矩阵的乘法，来简化循环，让代码更加美观，便于理解。 代码%% 直接分解法，分解为LU矩阵 n = size(A,1); L = eye(n); U = zeros(n); % U第一行, L第一列 U(1,:)">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-03-29T02:40:35.727Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="whh的博客">
+<meta name="twitter:title" content="10行代码实现矩阵的LU分解（matlab）">
+<meta name="twitter:description" content="前言最近由于数值分析实验课要求，需要通过matlab实现矩阵的LU分解。但是看了很多网友写的程序，基本上都是通过循环嵌套循环来实现矩阵的LU分解。略感琐碎，因此最近两天便一直在思考能否利用矩阵的乘法，来简化循环，让代码更加美观，便于理解。 代码%% 直接分解法，分解为LU矩阵 n = size(A,1); L = eye(n); U = zeros(n); % U第一行, L第一列 U(1,:)">
 
 
 
@@ -115,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/archives/2019/03/">
+  <link rel="canonical" href="http://yoursite.com/2019/03/29/10行代码实现矩阵的LU分解（matlab）/">
 
 
 
 
 
-  <title>归档 | whh的博客</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>10行代码实现矩阵的LU分解（matlab） | whh的博客</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -140,7 +144,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-archive">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -214,142 +218,153 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/29/10行代码实现矩阵的LU分解（matlab）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="whh">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="whh的博客">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">10行代码实现矩阵的LU分解（matlab）</h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-29T10:22:36+08:00">
+                2019-03-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-        嗯..! 目前共计 3 篇日志。 继续努力。
-      </span>
 
-      
-
-        
-        
-        
-
-        
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
-          </div>
-        
-        
+            
+          
 
-        
+          
+          
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/03/29/10行代码实现矩阵的LU分解（matlab）/" itemprop="url">
-              
-                <span itemprop="name">10行代码实现矩阵的LU分解（matlab）</span>
-              
-            </a>
-        
-      </h2>
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-29T10:22:36+08:00" content="2019-03-29">
-          03-29
-        </time>
-      </div>
+          
 
-    </header>
-  </article>
+        </div>
+      </header>
+    
 
-
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/03/27/hello-hexo-markdown/" itemprop="url">
-              
-                <span itemprop="name">hello hexo markdown</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-27T17:53:21+08:00" content="2019-03-27">
-          03-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/03/27/hello-world/" itemprop="url">
-              
-                <span itemprop="name">Hello World</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-27T16:50:28+08:00" content="2019-03-27">
-          03-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近由于数值分析实验课要求，需要通过matlab实现矩阵的LU分解。但是看了很多网友写的程序，基本上都是通过循环嵌套循环来实现矩阵的LU分解。略感琐碎，因此最近两天便一直在思考<br>能否利用矩阵的乘法，来简化循环，让代码更加美观，便于理解。</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p><code>%% 直接分解法，分解为LU矩阵
+n = size(A,1);
+L = eye(n);
+U = zeros(n);
+% U第一行, L第一列
+U(1,:) = A(1,:);
+L(:,1) = A(:,1)/U(1,1);
+for i=2:n   % 每次循环计算U的一行 L的一列
+    U(i,i:n) = A(i,i:n) - L(i,:)*U(:,i:n);
+    L(i:n,i) = (A(i:n,i) - L(i:n,:)*U(:,i))/U(i,i);
+end
+L = L - diag(diag(L)-1);</code></p>
 
       
-
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/27/hello-hexo-markdown/" rel="next" title="hello hexo markdown">
+                <i class="fa fa-chevron-left"></i> hello hexo markdown
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -357,6 +372,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -377,8 +396,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -420,6 +448,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码"><span class="nav-number">2.</span> <span class="nav-text">代码</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -553,6 +597,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
