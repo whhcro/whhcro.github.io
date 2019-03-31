@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="whh的博客">
 <meta property="og:description" content="前言最近由于数值分析实验课要求，需要通过matlab实现矩阵的LU分解。但是看了很多网友写的程序，基本上都是通过循环嵌套循环来实现矩阵的LU分解。略感琐碎，因此最近两天便一直在思考能否利用矩阵的乘法，来简化循环，让代码更加美观，便于理解。话不多说，直接上代码。 代码（$A$为待分解矩阵，要求$A$的顺序主子式不为0）n = size(A,1); L = eye(n); U = zeros(n);">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-31T15:14:44.022Z">
+<meta property="og:updated_time" content="2019-03-31T15:33:35.357Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="10行代码实现矩阵的LU分解（matlab）">
 <meta name="twitter:description" content="前言最近由于数值分析实验课要求，需要通过matlab实现矩阵的LU分解。但是看了很多网友写的程序，基本上都是通过循环嵌套循环来实现矩阵的LU分解。略感琐碎，因此最近两天便一直在思考能否利用矩阵的乘法，来简化循环，让代码更加美观，便于理解。话不多说，直接上代码。 代码（$A$为待分解矩阵，要求$A$的顺序主子式不为0）n = size(A,1); L = eye(n); U = zeros(n);">
@@ -318,6 +318,14 @@ end
 <h1 id="代码解释"><a href="#代码解释" class="headerlink" title="代码解释"></a>代码解释</h1><p>1-3行代码：初始化（自己去Matlab中运行以下就知道是什么意思了）</p>
 <p>4-5行代码：计算$U$的第一行与$L$的第一列</p>
 <p>6-10行代码：通过循环计算$U$的第$k$行与$L$的第$k$列</p>
+<h1 id="重点解析后四行代码"><a href="#重点解析后四行代码" class="headerlink" title="重点解析后四行代码"></a>重点解析后四行代码</h1><p>众所周知（任何一本书上都会详细的讲到），计算矩阵$U$的第$k$行与矩阵$L$的第$k$列的公式为：（推导思路和上述分解思路一致，可以自行验证）</p>
+<p>$$u_{kj}=a_{kj}-\sum\limits_{q=1}^{k-1}l_{kq}u_{qj}，j=k,…,n$$</p>
+<p>$$l_{ik}=\frac{a_{ik}-\sum\limits_{q=1}^{k-1}l_{iq}u_{qk}}{u_{kk}}，i=k+1,k+2,…n$$</p>
+<p>粗略分析，要计算$U$的第$k$行，那么就需要算$k-n+1$个元素，每个元素的计算中又有一个求和，再加上不仅要算$U$的第$k$行，还有$U$的第$k+1$到$n$行。因此没有分析错的话应该是三重循环。</p>
+<p>下面来解释我通过利用矩阵的乘法来简化循环的思路：</p>
+<p>以$n=4，i=2$为例,此时的矩阵形态为：</p>
+<p>$$A=\left[<br>\begin{matrix}<br>   a_{11} &amp; a_{12} &amp; a_{13} &amp; a_{14}\\<br>   a_{21} &amp; a_{22} &amp; a_{23} &amp; a_{24} \\<br>   a_{31} &amp; a_{32} &amp; a_{33} &amp; a_{34} \\<br>   a_{41} &amp; a_{42} &amp; a_{43} &amp; a_{44}<br>\end{matrix}<br>\right]<br>$$<br>$$<br>L =<br>\left[<br>\begin{matrix}<br>1   &amp;   0   &amp;   0   &amp;   0 \\<br>l_{21}   &amp;   1   &amp;   0   &amp;   0 \\<br>1_{31}   &amp;   0   &amp;   1   &amp;   0 \\<br>1_{41}   &amp;   0   &amp;   0   &amp;   1 \\<br>\end{matrix}<br>\right],U=<br>\left[<br>\begin{matrix}<br>u_{11}   &amp;   u_{12}   &amp;   u_{13}   &amp;   u_{14} \\<br>0   &amp;   0   &amp;   0   &amp;   0 \\<br>0   &amp;   0   &amp;   0   &amp;   0 \\<br>0   &amp;   0   &amp;   0   &amp;   0 \\<br>\end{matrix}<br>\right] $$</p>
+<p>未完结</p>
 
       
     </div>
@@ -464,7 +472,7 @@ end
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码（-A-为待分解矩阵，要求-A-的顺序主子式不为0）"><span class="nav-number">2.</span> <span class="nav-text">代码（$A$为待分解矩阵，要求$A$的顺序主子式不为0）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分解思路"><span class="nav-number">3.</span> <span class="nav-text">分解思路</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码解释"><span class="nav-number">4.</span> <span class="nav-text">代码解释</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码（-A-为待分解矩阵，要求-A-的顺序主子式不为0）"><span class="nav-number">2.</span> <span class="nav-text">代码（$A$为待分解矩阵，要求$A$的顺序主子式不为0）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分解思路"><span class="nav-number">3.</span> <span class="nav-text">分解思路</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码解释"><span class="nav-number">4.</span> <span class="nav-text">代码解释</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#重点解析后四行代码"><span class="nav-number">5.</span> <span class="nav-text">重点解析后四行代码</span></a></li></ol></div>
             
 
           </div>
