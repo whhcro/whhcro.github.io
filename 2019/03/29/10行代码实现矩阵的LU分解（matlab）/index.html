@@ -79,17 +79,19 @@
 
 
 
-<meta name="description" content="前言最近由于数值分析实验课要求，需要通过matlab实现矩阵的LU分解。但是看了很多网友写的程序，基本上都是通过循环嵌套循环来实现矩阵的LU分解。略感琐碎，因此最近两天便一直在思考能否利用矩阵的乘法，来简化循环，让代码更加美观，便于理解。话不多说，直接上代码。 代码（$A$为待分解矩阵，要求$A$的顺序主子式不为0）12345678910n = size(A,1);L = eye(n);U = z">
+<meta name="description" content="前言最近由于数值分析实验课要求，需要通过matlab实现矩阵的LU分解。但是看了很多网友写的程序，基本上都是通过循环嵌套循环来实现矩阵的LU分解。略感琐碎，因此最近两天便一直在思考能否利用矩阵的乘v法，来简化循环，让代码更加美观，便于理解。话不多说，直接上代码。 代码（$A$为待分解矩阵，要求$A$的顺序主子式不为0）12345678910n = size(A,1);L = eye(n);U =">
 <meta property="og:type" content="article">
 <meta property="og:title" content="10行代码实现矩阵的LU分解（matlab）">
 <meta property="og:url" content="http://yoursite.com/2019/03/29/10行代码实现矩阵的LU分解（matlab）/index.html">
 <meta property="og:site_name" content="whh的博客">
-<meta property="og:description" content="前言最近由于数值分析实验课要求，需要通过matlab实现矩阵的LU分解。但是看了很多网友写的程序，基本上都是通过循环嵌套循环来实现矩阵的LU分解。略感琐碎，因此最近两天便一直在思考能否利用矩阵的乘法，来简化循环，让代码更加美观，便于理解。话不多说，直接上代码。 代码（$A$为待分解矩阵，要求$A$的顺序主子式不为0）12345678910n = size(A,1);L = eye(n);U = z">
+<meta property="og:description" content="前言最近由于数值分析实验课要求，需要通过matlab实现矩阵的LU分解。但是看了很多网友写的程序，基本上都是通过循环嵌套循环来实现矩阵的LU分解。略感琐碎，因此最近两天便一直在思考能否利用矩阵的乘v法，来简化循环，让代码更加美观，便于理解。话不多说，直接上代码。 代码（$A$为待分解矩阵，要求$A$的顺序主子式不为0）12345678910n = size(A,1);L = eye(n);U =">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-07T12:32:51.854Z">
+<meta property="og:image" content="http://yoursite.com/images/矩阵LU分解.PNG">
+<meta property="og:updated_time" content="2019-06-12T00:51:45.186Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="10行代码实现矩阵的LU分解（matlab）">
-<meta name="twitter:description" content="前言最近由于数值分析实验课要求，需要通过matlab实现矩阵的LU分解。但是看了很多网友写的程序，基本上都是通过循环嵌套循环来实现矩阵的LU分解。略感琐碎，因此最近两天便一直在思考能否利用矩阵的乘法，来简化循环，让代码更加美观，便于理解。话不多说，直接上代码。 代码（$A$为待分解矩阵，要求$A$的顺序主子式不为0）12345678910n = size(A,1);L = eye(n);U = z">
+<meta name="twitter:description" content="前言最近由于数值分析实验课要求，需要通过matlab实现矩阵的LU分解。但是看了很多网友写的程序，基本上都是通过循环嵌套循环来实现矩阵的LU分解。略感琐碎，因此最近两天便一直在思考能否利用矩阵的乘v法，来简化循环，让代码更加美观，便于理解。话不多说，直接上代码。 代码（$A$为待分解矩阵，要求$A$的顺序主子式不为0）12345678910n = size(A,1);L = eye(n);U =">
+<meta name="twitter:image" content="http://yoursite.com/images/矩阵LU分解.PNG">
 
 
 
@@ -299,7 +301,7 @@
       
 
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近由于数值分析实验课要求，需要通过matlab实现矩阵的LU分解。但是看了很多网友写的程序，基本上都是通过循环嵌套循环来实现矩阵的LU分解。略感琐碎，因此最近两天便一直在思考能否利用矩阵的乘法，来简化循环，让代码更加美观，便于理解。话不多说，直接上代码。</p>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近由于数值分析实验课要求，需要通过matlab实现矩阵的LU分解。但是看了很多网友写的程序，基本上都是通过循环嵌套循环来实现矩阵的LU分解。略感琐碎，因此最近两天便一直在思考能否利用矩阵的乘v法，来简化循环，让代码更加美观，便于理解。话不多说，直接上代码。</p>
 <h1 id="代码（-A-为待分解矩阵，要求-A-的顺序主子式不为0）"><a href="#代码（-A-为待分解矩阵，要求-A-的顺序主子式不为0）" class="headerlink" title="代码（$A$为待分解矩阵，要求$A$的顺序主子式不为0）"></a>代码（$A$为待分解矩阵，要求$A$的顺序主子式不为0）</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">n = size(A,1);</span><br><span class="line">L = eye(n);</span><br><span class="line">U = zeros(n);</span><br><span class="line">U(1,:) = A(1,:);</span><br><span class="line">L(:,1) = A(:,1)/U(1,1);</span><br><span class="line"><span class="keyword">for</span> i=2:n   % 每次循环计算U的一行 L的一列</span><br><span class="line">   U(i,i:n) = A(i,i:n) - L(i,:)*U(:,i:n);</span><br><span class="line">   L(i:n,i) = (A(i:n,i) - L(i:n,:)*U(:,i))/U(i,i);</span><br><span class="line">   L = L - diag(diag(L)-1);</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
 <h1 id="分解思路"><a href="#分解思路" class="headerlink" title="分解思路"></a>分解思路</h1><p>首先我们回顾一下矩阵的LU分解，矩阵的LU分解就是将一个矩阵$A$,分解为两个矩阵的乘积，记为$LU$,其中$L$为下三角形矩阵，$U$为上三角矩阵。以4阶矩阵为例，数学表达式如下：</p>
 <p>$$\left[<br>\begin{matrix}<br>   a_{11} &amp; a_{12} &amp; a_{13} &amp; a_{14}\\<br>   a_{21} &amp; a_{22} &amp; a_{23} &amp; a_{24} \\<br>   a_{31} &amp; a_{32} &amp; a_{33} &amp; a_{34} \\<br>   a_{41} &amp; a_{42} &amp; a_{43} &amp; a_{44}<br>\end{matrix}<br>\right] =<br>\left[<br>\begin{matrix}<br>1   &amp;   0   &amp;   0   &amp;   0 \\<br>l_{21}   &amp;   1   &amp;   0   &amp;   0 \\<br>1_{31}   &amp;   l_{32}   &amp;   1   &amp;   0 \\<br>1_{41}   &amp;   l_{42}   &amp;   l_{43}   &amp;   1 \\<br>\end{matrix}<br>\right]<br>\left[<br>\begin{matrix}<br>u_{11}   &amp;   u_{12}   &amp;   u_{13}   &amp;   u_{14} \\<br>0   &amp;   u_{22}   &amp;   u_{23}   &amp;   u_{24} \\<br>0   &amp;   0   &amp;   u_{33}   &amp;   u_{34} \\<br>0   &amp;   0   &amp;   0   &amp;   u_{44} \\<br>\end{matrix}<br>\right] $$</p>
@@ -316,7 +318,7 @@
 <p>下面来解释我通过利用矩阵的乘法来简化循环的思路：</p>
 <p>以$n=4，i=2$为例,此时的矩阵形态为：</p>
 <p>$$A=\left[<br>\begin{matrix}<br>   a_{11} &amp; a_{12} &amp; a_{13} &amp; a_{14}\\<br>   a_{21} &amp; a_{22} &amp; a_{23} &amp; a_{24} \\<br>   a_{31} &amp; a_{32} &amp; a_{33} &amp; a_{34} \\<br>   a_{41} &amp; a_{42} &amp; a_{43} &amp; a_{44}<br>\end{matrix}<br>\right]<br>$$<br>$$<br>L =<br>\left[<br>\begin{matrix}<br>1   &amp;   0   &amp;   0   &amp;   0 \\<br>l_{21}   &amp;   1   &amp;   0   &amp;   0 \\<br>1_{31}   &amp;   0   &amp;   1   &amp;   0 \\<br>1_{41}   &amp;   0   &amp;   0   &amp;   1 \\<br>\end{matrix}<br>\right],U=<br>\left[<br>\begin{matrix}<br>u_{11}   &amp;   u_{12}   &amp;   u_{13}   &amp;   u_{14} \\<br>0   &amp;   0   &amp;   0   &amp;   0 \\<br>0   &amp;   0   &amp;   0   &amp;   0 \\<br>0   &amp;   0   &amp;   0   &amp;   0 \\<br>\end{matrix}<br>\right] $$</p>
-<p>未完结2333</p>
+<p>需要计算矩阵$U$的第二行与矩阵$L$的第二列，可以观察到图中分块矩阵存在运算关系，因此可以利用此关系，直接运算得到$U$的第二行。<br>从而避免了对其单个元素计算，提升了代码的可读性。<br><img src="/images/矩阵LU分解.PNG" alt></p>
 
       
     </div>
