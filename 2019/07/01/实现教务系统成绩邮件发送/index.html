@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="whh的博客">
 <meta property="og:description" content="趁着这几天期末考试，很闲。便想着利用python实现成绩的自动发送，实现以后就不用再天天手动查询，只要一出成绩，便能发送给我。 将问题划分，首先我们需要检测老师是否登了成绩，再将新出的成绩爬取下来，最后将成绩通过邮件发送给我。 利用Python发邮件利用Python发送邮件主要用到标准库smtplib、email。 具体思路为：登陆一个不常用的邮箱（以163为例），通过这个邮箱，发送自己常用的邮件">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-01T09:37:43.687Z">
+<meta property="og:updated_time" content="2019-07-01T09:39:27.259Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="实现教务系统成绩邮件发送">
 <meta name="twitter:description" content="趁着这几天期末考试，很闲。便想着利用python实现成绩的自动发送，实现以后就不用再天天手动查询，只要一出成绩，便能发送给我。 将问题划分，首先我们需要检测老师是否登了成绩，再将新出的成绩爬取下来，最后将成绩通过邮件发送给我。 利用Python发邮件利用Python发送邮件主要用到标准库smtplib、email。 具体思路为：登陆一个不常用的邮箱（以163为例），通过这个邮箱，发送自己常用的邮件">
@@ -303,31 +303,7 @@
 <p>将问题划分，首先我们需要检测老师是否登了成绩，再将新出的成绩爬取下来，最后将成绩通过邮件发送给我。</p>
 <h1 id="利用Python发邮件"><a href="#利用Python发邮件" class="headerlink" title="利用Python发邮件"></a>利用Python发邮件</h1><p>利用Python发送邮件主要用到标准库smtplib、email。</p>
 <p>具体思路为：登陆一个不常用的邮箱（以163为例），通过这个邮箱，发送自己常用的邮件（QQ邮箱）。从而实现提醒自己的目的。</p>
-<h2 id="Python代码如下"><a href="#Python代码如下" class="headerlink" title="Python代码如下"></a>Python代码如下</h2><p><code>`</code>bash<br>import smtplib<br>from email.mime.text import MIMEText</p>
-<p>#设置服务器所需信息</p>
-<p>#163邮箱服务器地址<br>mail_host = ‘smtp.163.com’</p>
-<p>#163用户名<br>mail_user = <a href="mailto:&#39;15884638768@163.com" target="_blank" rel="noopener">&#39;15884638768@163.com</a>‘  </p>
-<p>#密码(部分邮箱为授权码)<br>mail_pass = ‘1212341598zryq’   </p>
-<p>#邮件发送方邮箱地址<br>sender = <a href="mailto:&#39;15884638768@163.com" target="_blank" rel="noopener">&#39;15884638768@163.com</a>‘  </p>
-<p>#邮件接受方邮箱地址，注意需要[]包裹，这意味着你可以写多个邮件地址群发<br>receivers = [<a href="mailto:&#39;814458255@qq.com" target="_blank" rel="noopener">&#39;814458255@qq.com</a>‘]  </p>
-<p>content = ‘这是一封Python发送的邮件’</p>
-<p>#设置email信息</p>
-<p>#邮件内容设置<br>message = MIMEText(content,’plain’,’utf-8’)</p>
-<p>#邮件主题<br>message[‘Subject’] = ‘title’ </p>
-<p>#发送方信息<br>message[‘From’] = sender </p>
-<p>#接受方信息<br>message[‘To’] = receivers[0]  </p>
-<h1 id="登录并发送邮件"><a href="#登录并发送邮件" class="headerlink" title="登录并发送邮件"></a>登录并发送邮件</h1><p>try:<br>    smtpObj = smtplib.SMTP() </p>
-<pre><code>#连接到服务器
-smtpObj.connect(mail_host,25)
-#登录到服务器
-smtpObj.login(mail_user,mail_pass) 
-#发送
-smtpObj.sendmail(
-    sender,receivers,message.as_string()) 
-#退出
-smtpObj.quit() 
-print(&apos;success&apos;)
-</code></pre><p>except smtplib.SMTPException as e:<br>    print(‘error’,e) #打印错误<br>bash</p>
+<h2 id="Python代码如下"><a href="#Python代码如下" class="headerlink" title="Python代码如下"></a>Python代码如下</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">import smtplib</span><br><span class="line">from email.mime.text import MIMEText</span><br><span class="line"><span class="comment">#设置服务器所需信息</span></span><br><span class="line"><span class="comment">#163邮箱服务器地址</span></span><br><span class="line">mail_host = <span class="string">'smtp.163.com'</span></span><br><span class="line"><span class="comment">#163用户名</span></span><br><span class="line">mail_user = <span class="string">'15884638768@163.com'</span>  </span><br><span class="line"><span class="comment">#密码(部分邮箱为授权码) </span></span><br><span class="line">mail_pass = <span class="string">'1212341598zryq'</span>   </span><br><span class="line"><span class="comment">#邮件发送方邮箱地址</span></span><br><span class="line">sender = <span class="string">'15884638768@163.com'</span>  </span><br><span class="line"><span class="comment">#邮件接受方邮箱地址，注意需要[]包裹，这意味着你可以写多个邮件地址群发</span></span><br><span class="line">receivers = [<span class="string">'814458255@qq.com'</span>]  </span><br><span class="line"></span><br><span class="line">content = <span class="string">'这是一封Python发送的邮件'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#设置email信息</span></span><br><span class="line"><span class="comment">#邮件内容设置</span></span><br><span class="line">message = MIMEText(content,<span class="string">'plain'</span>,<span class="string">'utf-8'</span>)</span><br><span class="line"><span class="comment">#邮件主题       </span></span><br><span class="line">message[<span class="string">'Subject'</span>] = <span class="string">'title'</span> </span><br><span class="line"><span class="comment">#发送方信息</span></span><br><span class="line">message[<span class="string">'From'</span>] = sender </span><br><span class="line"><span class="comment">#接受方信息     </span></span><br><span class="line">message[<span class="string">'To'</span>] = receivers[0]  </span><br><span class="line"></span><br><span class="line"><span class="comment"># 登录并发送邮件</span></span><br><span class="line">try:</span><br><span class="line">    smtpObj = smtplib.SMTP() </span><br><span class="line">    <span class="comment">#连接到服务器</span></span><br><span class="line">    smtpObj.connect(mail_host,25)</span><br><span class="line">    <span class="comment">#登录到服务器</span></span><br><span class="line">    smtpObj.login(mail_user,mail_pass) </span><br><span class="line">    <span class="comment">#发送</span></span><br><span class="line">    smtpObj.sendmail(</span><br><span class="line">        sender,receivers,message.as_string()) </span><br><span class="line">    <span class="comment">#退出</span></span><br><span class="line">    smtpObj.quit() </span><br><span class="line">    <span class="built_in">print</span>(<span class="string">'success'</span>)</span><br><span class="line">except smtplib.SMTPException as e:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">'error'</span>,e) <span class="comment">#打印错误</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -474,7 +450,7 @@ print(&apos;success&apos;)
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#利用Python发邮件"><span class="nav-number">1.</span> <span class="nav-text">利用Python发邮件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Python代码如下"><span class="nav-number">1.1.</span> <span class="nav-text">Python代码如下</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#登录并发送邮件"><span class="nav-number">2.</span> <span class="nav-text">登录并发送邮件</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#利用Python发邮件"><span class="nav-number">1.</span> <span class="nav-text">利用Python发邮件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Python代码如下"><span class="nav-number">1.1.</span> <span class="nav-text">Python代码如下</span></a></li></ol></li></ol></div>
             
 
           </div>
