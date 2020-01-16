@@ -310,7 +310,12 @@
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
 <p>在vscode中打开markdown预览模式方法：先按Ctrl + K，然后放掉，紧接着再按 v；</p>
-<h2 id="重装系统后部署hexo"><a href="#重装系统后部署hexo" class="headerlink" title="重装系统后部署hexo"></a>重装系统后部署hexo</h2>
+<h1 id="重装系统后部署hexo"><a href="#重装系统后部署hexo" class="headerlink" title="重装系统后部署hexo"></a>重装系统后部署hexo</h1><h2 id="恢复本地环境"><a href="#恢复本地环境" class="headerlink" title="恢复本地环境"></a>恢复本地环境</h2><p>按照原来的方式，安装Git,Node.js,Hexo。<br>安装Hexo的方法为:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure></p>
+<p>安装好之后进行下一步</p>
+<h2 id="恢复同步GitHub功能"><a href="#恢复同步GitHub功能" class="headerlink" title="恢复同步GitHub功能"></a>恢复同步GitHub功能</h2><p>在Blog文件夹目录内右击打开Git Bash Here窗口，输入以下命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name <span class="string">"GitHub用户名"</span></span><br><span class="line">$ git config --global user.email <span class="string">"GitHub邮箱"</span></span><br></pre></td></tr></table></figure></p>
+<p>在本地生成密钥对，执行下面代码后，点击三次回车(不用设置密码)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C <span class="string">"邮箱地址"</span></span><br></pre></td></tr></table></figure></p>
+<p>在目录C:/User/用户名/.ssh文件中找到id_rsa.pub这个文件，将其复制到github上即可。</p>
+
           
         
       
