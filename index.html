@@ -303,8 +303,8 @@
             <h1 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h1><h2 id="需要删除DataFrame中全为0的列"><a href="#需要删除DataFrame中全为0的列" class="headerlink" title="需要删除DataFrame中全为0的列"></a>需要删除DataFrame中全为0的列</h2><p><em>代码</em>：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data = data.loc[:,(data != 0).any(axis=0)]</span><br></pre></td></tr></table></figure></p>
 <p><em>解析</em>：<br>首先解析loc方法，loc是对DataFrame进行索引的方法。loc[行,列]。可以进行切片(不过这里的切片与Python的字符串切片有细微的不同，这里的切面包括了最后一个)。</p>
 <p><code>loc</code>方法中还能放入<code>boolean</code>矩阵，<code>df.loc[[False, False, True]]</code>能够返回df的第三行(没有逗号的话，默认索引行)</p>
-<p><code>data != 0</code> 能够返回一个<code>boolean</code>矩阵，对这个矩阵调用<code>any()</code>方法，且<code>axis</code>为0(0代表行，1代表列)，意味着，行被归并，也就是看各个列的情况。<code>any</code>用于检测，对应的数据，是否有一个为<code>True</code>,若有一个为<code>True</code>，则返回<code>True</code>。</p>
-<p>与<code>any()</code>对应的还有一个<code>all()</code>，<code>all()</code>代表着是否每一个都为<code>True</code>,若是，则返回<code>True</code></p>
+<p><code>data != 0</code> 能够返回一个<code>boolean</code>矩阵，对这个矩阵调用<code>any()</code>方法，且<code>axis</code>为0(0代表行，1代表列)，意味着，行被归并，也就是看各个列的情况。<code>any</code>用于检测，对应的数据，<strong>是否有一个</strong>为<code>True</code>,若有一个为<code>True</code>，则返回<code>True</code>。</p>
+<p>与<code>any()</code>对应的还有一个<code>all()</code>，<code>all()</code>代表着<strong>是否每一个</strong>都为<code>True</code>,若是，则返回<code>True</code>。</p>
 
           
         
