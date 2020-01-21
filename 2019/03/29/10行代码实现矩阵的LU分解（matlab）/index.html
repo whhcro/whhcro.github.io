@@ -87,12 +87,12 @@
 <meta property="og:site_name" content="whh的博客">
 <meta property="og:description" content="前言最近由于数值分析实验课要求，需要通过matlab实现矩阵的LU分解。但是看了很多网友写的程序，基本上都是通过循环嵌套循环来实现矩阵的LU分解。略感琐碎，因此最近两天便一直在思考能否利用矩阵的乘v法，来简化循环，让代码更加美观，便于理解。话不多说，直接上代码。 代码（$A$为待分解矩阵，要求$A$的顺序主子式不为0）12345678910n = size(A,1);L = eye(n);U =">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/images/矩阵LU分解.PNG">
-<meta property="og:updated_time" content="2020-01-20T16:16:13.134Z">
+<meta property="og:image" content="http://yoursite.com/images/矩阵的LU分解/矩阵LU分解.PNG">
+<meta property="og:updated_time" content="2020-01-21T04:12:41.685Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="10行代码实现矩阵的LU分解（matlab）">
 <meta name="twitter:description" content="前言最近由于数值分析实验课要求，需要通过matlab实现矩阵的LU分解。但是看了很多网友写的程序，基本上都是通过循环嵌套循环来实现矩阵的LU分解。略感琐碎，因此最近两天便一直在思考能否利用矩阵的乘v法，来简化循环，让代码更加美观，便于理解。话不多说，直接上代码。 代码（$A$为待分解矩阵，要求$A$的顺序主子式不为0）12345678910n = size(A,1);L = eye(n);U =">
-<meta name="twitter:image" content="http://yoursite.com/images/矩阵LU分解.PNG">
+<meta name="twitter:image" content="http://yoursite.com/images/矩阵的LU分解/矩阵LU分解.PNG">
 
 
 
@@ -351,7 +351,7 @@
 <p>下面来解释我通过利用矩阵的乘法来简化循环的思路：</p>
 <p>以$n=4，i=2$为例,此时的矩阵形态为：</p>
 <p>$$A=\left[<br>\begin{matrix}<br>   a_{11} &amp; a_{12} &amp; a_{13} &amp; a_{14}\\<br>   a_{21} &amp; a_{22} &amp; a_{23} &amp; a_{24} \\<br>   a_{31} &amp; a_{32} &amp; a_{33} &amp; a_{34} \\<br>   a_{41} &amp; a_{42} &amp; a_{43} &amp; a_{44}<br>\end{matrix}<br>\right]<br>$$<br>$$<br>L =<br>\left[<br>\begin{matrix}<br>1   &amp;   0   &amp;   0   &amp;   0 \\<br>l_{21}   &amp;   1   &amp;   0   &amp;   0 \\<br>1_{31}   &amp;   0   &amp;   1   &amp;   0 \\<br>1_{41}   &amp;   0   &amp;   0   &amp;   1 \\<br>\end{matrix}<br>\right],U=<br>\left[<br>\begin{matrix}<br>u_{11}   &amp;   u_{12}   &amp;   u_{13}   &amp;   u_{14} \\<br>0   &amp;   0   &amp;   0   &amp;   0 \\<br>0   &amp;   0   &amp;   0   &amp;   0 \\<br>0   &amp;   0   &amp;   0   &amp;   0 \\<br>\end{matrix}<br>\right] $$</p>
-<p>需要计算矩阵$U$的第二行与矩阵$L$的第二列，可以观察到图中分块矩阵存在运算关系，因此可以利用此关系，直接运算得到$U$的第二行。<br>从而避免了对其单个元素计算，提升了代码的可读性。<br><img src="/images/矩阵LU分解.PNG" alt></p>
+<p>需要计算矩阵$U$的第二行与矩阵$L$的第二列，可以观察到图中分块矩阵存在运算关系，因此可以利用此关系，直接运算得到$U$的第二行。<br>从而避免了对其单个元素计算，提升了代码的可读性。<br><img src="/images/矩阵的LU分解/矩阵LU分解.PNG" alt></p>
 
       
     </div>
