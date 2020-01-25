@@ -92,7 +92,7 @@
 <meta property="og:image" content="http://yoursite.com/images/Inno%20Camp/day1_2.jpg">
 <meta property="og:image" content="http://yoursite.com/images/Inno%20Camp/day1_3.jpg">
 <meta property="og:image" content="http://yoursite.com/images/Inno%20Camp/day1_4.jpg">
-<meta property="og:updated_time" content="2020-01-25T06:41:21.090Z">
+<meta property="og:updated_time" content="2020-01-25T07:52:23.232Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Inno Camp Summit 2020 总结">
 <meta name="twitter:image" content="http://yoursite.com/images/Inno%20Camp/abstract.jpg">
@@ -351,12 +351,18 @@
 <h1 id="Day-2"><a href="#Day-2" class="headerlink" title="Day 2"></a>Day 2</h1><p>第二天一大早便是“月球仔身体素质赛”，我们仅能够通过小车摄像头传回来的画面，控制小车的行动。目的是要使小车按照规定赛道行驶。由于我和我的室友在使用app连接小车蓝牙的过程中出了一点状况，导致最后没能参加这场比赛。</p>
 <h1 id="Day-3"><a href="#Day-3" class="headerlink" title="Day 3"></a>Day 3</h1><p>第三天一早是月球仔踢足球比赛，吸收了昨天的教训，我们组在调试好程序以后，便立刻进入比赛战场，第一场比赛是和魏睿老哥对战，我们第一波对战都仅仅是提高了月球仔的最大速度。而月球仔仅有的功能是前进和转向(是的，没有后退和横着走)，在比赛过程中，魏睿老哥的月球仔轮子掉落，我便轻松的拿下一局。在我们比赛完之后，我们发现其他的小组的车居然能够像螃蟹一样前后左右横冲直撞。于是我们便回到实验室研究代码，看是否能够改出这样的效果。经过半个小时的研究，终于使得小车可以横冲直撞。改代码的思路其实也很简单，在我们原始的代码中，我们对手柄已经赋予了前进功能，只不过当移动手柄到左右方时，小车仅仅是原地打转。根据小车行动控制的api，其中有个参数c，c的值代表小车的平移角度。于是我们将手柄的角度直接传入c中，便能够使得小车横冲直撞。最后大家都才上了自己的“改装车”，进入3v3的战场。在3v3的过程中，问题很多，我的车在行驶过程中，电源直接被其他的车给关闭了。。。(小声吐槽一句，这才是这个游戏的终极玩法)</p>
 <p>第三天晚上在吃了汉堡宴以后便早早的回到了酒店进行休息。</p>
-<h1 id="Day-4"><a href="#Day-4" class="headerlink" title="Day 4"></a>Day 4</h1><p>第四天便是我比较感兴趣的环节————使小车拥有智慧。在昨天的工作中，我们已经能够获得小车的摄像头权限。那么整个工作的思路就是，在小车摄像头获取到画面后，我们将对画面进行处理，根据情况对小车的下一步运动进行调整。这里面有几个非常重要的要点。</p>
+<h1 id="Day-4"><a href="#Day-4" class="headerlink" title="Day 4"></a>Day 4</h1><p>第四天便是我比较感兴趣的环节——使小车拥有智慧。在昨天的工作中，我们已经能够获得小车的摄像头权限。那么整个工作的思路就是，在小车摄像头获取到画面后，我们将对画面进行处理，根据情况对小车的下一步运动进行调整。这里面有几个非常重要的要点。</p>
 <ul>
 <li>如何能够让小车按照轨道走</li>
 <li>车标识别</li>
 </ul>
-<p>对于第一个问题，我们的轨道情况是左边是黄色边线，右边是白色边线。那么我们可以将图片中的黄色和白色找出来，按照这个线条来规范小车的行驶。在对于RGB图像，我们并不能将RGB值处于某个范围内的颜色认为是白色或者黄色，为了能够提取出某种特定的颜色，我们的做法是将RGB空间转换为HSV空间。而某个颜色在HSV空间会对应一个取值范围，详细可参见<a href="https://blog.csdn.net/Taily_Duan/article/details/51506776" target="_blank" rel="noopener">博客</a></p>
+<p>对于第一个问题，我们的轨道情况是左边是黄色边线，右边是白色边线。那么我们可以将图片中的黄色和白色找出来，按照这个线条来规范小车的行驶。在对于RGB图像，我们并不能将RGB值处于某个范围内的颜色认为是白色或者黄色，为了能够提取出某种特定的颜色，我们的做法是将RGB空间转换为HSV空间。而某个颜色在HSV空间会对应一个取值范围，详细可参见<a href="https://blog.csdn.net/Taily_Duan/article/details/51506776" target="_blank" rel="noopener">博客</a>。利用OpenCV中的inRange函数便能完成阈值分割(将满足条件的区域提取出来)。将摄像头返回的图像通过阈值处理，分别提取出黄色区域和白色的区域，得到两幅图像，再通过图像的“与”操作，便能够将图像合并为一副既提取了黄色区域又提取了白色区域的图像。</p>
+<p>在提取到黄色区域和白色区域以后，若直接根据这个区域去控制小车，会出现一个问题就是，远处进入摄像头的白色黄色区域会干扰算法的运行。因此我们需要做出一个ROI。ROI(region of interest)称为感兴趣区域。我们做了很小的梯形区域作为我们的ROI，通过ROI便能够除去摄像头获取的较远的一些地方的干扰图像。</p>
+<p>最后的调控思路是：若获取到了斜率为正的线条，那么代表小车左偏了，那么向右调整方向。若小车获取到斜率为负的线条，那么代表小车右偏了，那么向左调整方向。</p>
+<p>最值得纪念的是我们小组收集的数据集过程，在活动开始以后，我便迅速的安排了任务，将人员分为<code>拍照</code>，<code>质检</code>，<code>打标</code>三组。在我们小组的行动下，完成了11个类别的标签制作。最后我将数据集上传至Codelab，在晚上23:30时，终于部署好了模型，开始训练数据。</p>
+<h1 id="Day-5"><a href="#Day-5" class="headerlink" title="Day 5"></a>Day 5</h1><p>第五天一大早我便来到实验室，发现模型已经训练完毕。将tflite文件导出，再将模型部署到小车上，发现效果还不错。能够比较准确的识别车标。在小车识别到车标以后，会返回一个label值，我们利用switch语句，根据不同的label值，使做出不同的反应，完成车标识别的目标。</p>
+<p>在终极比赛中，我们得到10分(5分是完成按照轨道行驶，有5分是我的憨憨队友去水的)最后让我的室友去竞选奖品。他拿了一把安卓的雨伞。不过最后有一些多余的礼物，可以通过分享心得获取，我便在魏睿老哥的推荐下，上台分享数据集的制作，最后得到了一件Tensorflow的T恤。</p>
+<p>接下来晚上的Party的，这里就不描述了，直接上图吧哈哈哈。真的好棒。</p>
 
       
     </div>
@@ -516,7 +522,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Day-1"><span class="nav-number">2.</span> <span class="nav-text">Day 1</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Day-2"><span class="nav-number">3.</span> <span class="nav-text">Day 2</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Day-3"><span class="nav-number">4.</span> <span class="nav-text">Day 3</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Day-4"><span class="nav-number">5.</span> <span class="nav-text">Day 4</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Day-1"><span class="nav-number">2.</span> <span class="nav-text">Day 1</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Day-2"><span class="nav-number">3.</span> <span class="nav-text">Day 2</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Day-3"><span class="nav-number">4.</span> <span class="nav-text">Day 3</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Day-4"><span class="nav-number">5.</span> <span class="nav-text">Day 4</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Day-5"><span class="nav-number">6.</span> <span class="nav-text">Day 5</span></a></li></ol></div>
             
 
           </div>
