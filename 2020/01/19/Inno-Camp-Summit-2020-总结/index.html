@@ -91,7 +91,9 @@
 <meta property="og:image" content="http://q4o79626y.bkt.clouddn.com/day1_2.jpg">
 <meta property="og:image" content="http://q4o79626y.bkt.clouddn.com/day1_3.jpg">
 <meta property="og:image" content="http://q4o79626y.bkt.clouddn.com/day1_4.jpg">
-<meta property="og:updated_time" content="2020-01-26T03:02:36.069Z">
+<meta property="og:image" content="http://q4o79626y.bkt.clouddn.com/day4_1.jpg">
+<meta property="og:image" content="http://q4o79626y.bkt.clouddn.com/day5_1.jpg">
+<meta property="og:updated_time" content="2020-01-26T03:11:57.360Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Inno Camp Summit 2020 总结">
 <meta name="twitter:image" content="http://q4o79626y.bkt.clouddn.com/abstract.jpg">
@@ -359,9 +361,11 @@
 <p>在提取到黄色区域和白色区域以后，若直接根据这个区域去控制小车，会出现一个问题就是，远处进入摄像头的白色黄色区域会干扰算法的运行。因此我们需要做出一个ROI。ROI(region of interest)称为感兴趣区域。我们做了很小的梯形区域作为我们的ROI，通过ROI便能够除去摄像头获取的较远的一些地方的干扰图像。</p>
 <p>最后的调控思路是：若获取到了斜率为正的线条，那么代表小车左偏了，那么向右调整方向。若小车获取到斜率为负的线条，那么代表小车右偏了，那么向左调整方向。</p>
 <p>最值得纪念的是我们小组收集的数据集过程，在活动开始以后，我便迅速的安排了任务，将人员分为<code>拍照</code>，<code>质检</code>，<code>打标</code>三组。在我们小组的行动下，完成了11个类别的标签制作。最后我将数据集上传至Codelab，在晚上23:30时，终于部署好了模型，开始训练数据。</p>
+<p><img src="http://q4o79626y.bkt.clouddn.com/day4_1.jpg" alt="图片"></p>
 <h1 id="Day-5"><a href="#Day-5" class="headerlink" title="Day 5"></a>Day 5</h1><p>第五天一大早我便来到实验室，发现模型已经训练完毕。将tflite文件导出，再将模型部署到小车上，发现效果还不错。能够比较准确的识别车标。在小车识别到车标以后，会返回一个label值，我们利用switch语句，根据不同的label值，使做出不同的反应，完成车标识别的目标。</p>
 <p>在终极比赛中，我们得到10分(5分是完成按照轨道行驶，有5分是我的憨憨队友去水的)最后让我的室友去竞选奖品。他拿了一把安卓的雨伞。不过最后有一些多余的礼物，可以通过分享心得获取，我便在魏睿老哥的推荐下，上台分享数据集的制作，最后得到了一件Tensorflow的T恤。</p>
 <p>接下来晚上的Party的，这里就不描述了，直接上图吧哈哈哈。真的好棒。</p>
+<p><img src="http://q4o79626y.bkt.clouddn.com/day5_1.jpg" alt="图片"></p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>这次活动真的认识了好多大佬哈哈哈。咳咳，认真总结一下。我发现和大佬们的差距在于，他们总是能够抓住问题的关键点。在整个全栈开发中，老师们已经为我们提供好了很多好用的api,我们需要做的就是根据自己的需求去调用这些api。不过就算提供了api，整个项目的代码量还是比较大的，除去核心代码以后，还有各种例如设备摄像头权限获取的很多的代码。而我在那里一步一步的读代码时，大佬们已经找到了问题的核心所在，已经在开始修改核心代码了。这一点给我的感悟就是，我们得把精力用到刀刃上，快速定位问题，不要被一些无关紧要的事物所影响。</p>
 
       
